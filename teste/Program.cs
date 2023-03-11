@@ -1,28 +1,25 @@
-﻿//CRUD NA TABELA USERS
+﻿using teste.Interface;
+string select = string.Empty;
 
-using teste.CRUD;
-
-string? nome = string.Empty;
-string? sobreNome = string.Empty;
-int idade = 0;
-bool maior = false;
-
-Console.WriteLine("Digite o seu nome:");
-nome = Console.ReadLine();
-
-if (string.IsNullOrEmpty(nome))
+while (select != "[red]Finish[/]")
 {
-    Console.WriteLine("Você precisa digitar o seu nome:");
-    nome = Console.ReadLine();
+	select = MenuActions.InitialMenuInterface();
+    
+	switch (select)
+	{
+		case "Add [aqua]User[/]":
+			MenuActions.AddNewUserInterface();
+			break;
+		case "Update [aqua]User[/]":
+			break;
+		case "Get [aqua]User[/]":
+			break;
+		case "Delete [aqua]User[/]":
+			break;
+		case "[red]Finish[/]":
+			break;
+        default:
+			break;
+	}
 }
 
-Console.WriteLine("Digite o seu sobrenome");
-sobreNome = Console.ReadLine();
-
-Console.WriteLine("Digite sua idade");
-idade = Convert.ToInt32(Console.ReadLine());
-
-//fazer a logica para saber se é maior de idade
-CrudPersist crud = new();
-crud.InsertToDatabase(nome!, sobreNome!, idade);
-Console.WriteLine(crud.GetAllPeaple());
